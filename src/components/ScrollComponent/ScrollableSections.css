@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+.sections-wrapper {
+  height: 300vh; /* Three sections, each taking up full viewport height */
+  position: relative;
+}
+
+.section {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+  font-size: 2rem;
+}
+
+.section h1 {
+  font-size: 3rem;
+}
+
+/* Define background colors for each section */
+#introduction {
+  background-color: lightcoral;
+}
+
+#about {
+  background-color: lightseagreen;
+}
+
+#contact {
+  background-color: lightblue;
+}
+
+/* Active section transition effects */
+.section.active {
+  transform: scale(1.1); /* Add slight zoom effect to the active section */
+  background-color: yellow; /* Highlight the active section */
+}
