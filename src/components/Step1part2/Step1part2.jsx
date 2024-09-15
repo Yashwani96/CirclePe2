@@ -4,20 +4,14 @@ import Slider from "@mui/material/Slider"; // Import MUI Slider
 function Step1part2({ currentComponent, handleScrollClick, showPart1 }) {
   const [activeListItem, setActiveListItem] = useState(2);
   const sliderRef = useRef(null);
-<<<<<<< HEAD
   const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
-=======
->>>>>>> 9e1a26b (added the keyboard functionality to the browser)
 
   // Ensure the slider is focused when the component mounts
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Set focus to the slider
     }
-<<<<<<< HEAD
     setIsImageVisible(true);
-=======
->>>>>>> 9e1a26b (added the keyboard functionality to the browser)
   }, []);
 
   const handleClick = (index) => {

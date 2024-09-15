@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
-=======
-import React, { useEffect, useRef } from "react";
->>>>>>> 9e1a26b (added the keyboard functionality to the browser)
 import Slider from "@mui/material/Slider"; // Import the Slider from MUI
 
 function Homepage({ currentComponent, handleScrollClick }) {
@@ -11,20 +7,14 @@ function Homepage({ currentComponent, handleScrollClick }) {
     handleScrollClick(newValue); // Trigger the scroll click based on the slider value
   };
   const sliderRef = useRef(null);
-<<<<<<< HEAD
   const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
 
-=======
->>>>>>> 9e1a26b (added the keyboard functionality to the browser)
   // Add focus to the slider on component load
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Ensure slider is focused when page loads
     }
-<<<<<<< HEAD
     setIsImageVisible(true);
-=======
->>>>>>> 9e1a26b (added the keyboard functionality to the browser)
   }, []);
 
   return (
