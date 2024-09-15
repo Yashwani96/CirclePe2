@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "@mui/material/Slider"; // Import MUI Slider
 
 function Step4({ currentComponent, handleScrollClick }) {
@@ -8,20 +8,39 @@ function Step4({ currentComponent, handleScrollClick }) {
   };
 
   const sliderRef = useRef(null);
+  const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
   // Add focus to the slider on component load
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Ensure slider is focused when page loads
     }
+    setIsImageVisible(true);
   }, []);
 
   return (
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center">
-        <h2 className="text-3xl font-semibold text-white ml-96">Step 4</h2>
-        <div className="w-[60px] h-[2px] my-6 bg-white ml-96"></div>
-        <ul className="list-disc text-lg ml-96">
+        <h2 className="text-6xl font-semibold text-gray-500 ml-96 ">
+          Step{" "}
+          <span
+            className={`text-white transition-opacity duration-1000 ease-in-out ${
+              isImageVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            4
+          </span>
+        </h2>
+        <div
+          className={`w-[90px] h-[4px] mb-0 mt-14 bg-blue-500 ml-96 transition-transform duration-1000 ${
+            isImageVisible ? "translate-y-[-30px]" : ""
+          }`}
+        ></div>
+        <ul
+          className={`list-disc text-lg ml-96 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <li className="text-yellow-500">Tenant gets approved to move in:</li>
           <ul className="list-disc text-sm text-gray-400 ml-5 mt-2">
             <li>Gets Zero security deposit approval</li>
@@ -40,7 +59,9 @@ function Step4({ currentComponent, handleScrollClick }) {
         <img
           src="/images/step4.png"
           alt="Mobile"
-          className="absolute top-4 w-full max-w-xs ml-8"
+          className={`absolute top-4 w-full max-w-xs ml-8 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
         />
 
         {/* Right: MUI Slider */}

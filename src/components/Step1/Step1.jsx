@@ -4,12 +4,14 @@ import Slider from "@mui/material/Slider"; // Import the Slider from MUI
 function Step1({ currentComponent, handleScrollClick, showPart2 }) {
   const [activeListItem, setActiveListItem] = useState(1);
   const sliderRef = useRef(null);
+  const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
 
   // Ensure the slider is focused when the component mounts
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Set focus to the slider
     }
+    setIsImageVisible(true);
   }, []);
 
   // Handle slider change event
@@ -25,9 +27,23 @@ function Step1({ currentComponent, handleScrollClick, showPart2 }) {
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center">
-        <h2 className="text-3xl font-semibold text-white ml-96">Step 1</h2>
-        <div className="w-[60px] h-[2px] my-6 bg-white ml-96"></div>
-        <ul className="list-disc text-lg ml-96">
+        <h2
+          className={`text-6xl font-semibold text-gray-500 ml-96 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          Step <span className="text-white">1</span>
+        </h2>
+        <div
+          className={`w-[90px] h-[4px] mb-0 mt-14 bg-blue-500 ml-96 transition-transform duration-1000 ${
+            isImageVisible ? "translate-y-[-30px]" : ""
+          }`}
+        ></div>
+        <ul
+          className={`list-disc text-lg ml-96 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
           {/* First List Item: Default Highlighted */}
           <li
             className={`cursor-pointer ${
@@ -63,7 +79,9 @@ function Step1({ currentComponent, handleScrollClick, showPart2 }) {
         <img
           src="/images/step1.png"
           alt="Mobile"
-          className="absolute bottom-0 w-full max-w-xs ml-8"
+          className={`absolute bottom-0 w-full max-w-xs ml-8 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
         />
 
         {/* Right: MUI Slider */}

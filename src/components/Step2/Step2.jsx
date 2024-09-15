@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Slider from "@mui/material/Slider"; // Import MUI Slider
 
@@ -9,31 +9,48 @@ function Step2({ currentComponent, handleScrollClick }) {
   };
 
   const sliderRef = useRef(null);
+  const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
   // Add focus to the slider on component load
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Ensure slider is focused when page loads
     }
+    setIsImageVisible(true);
   }, []);
 
   return (
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center px-20">
-        <div className="ml-80">
-          <h2 className="text-3xl font-semibold text-white mb-2">Step 2</h2>
-          <div className="w-[30px] h-[2px] my-2 bg-white"></div>
-          <ul className="list-disc text-lg">
-            <li className="text-yellow-500">
-              Tenant selects Pay with Circle enabling:
-            </li>
-            <ul className="list-disc text-sm text-gray-400 ml-5 mt-2">
-              <li>Zero security deposit move-in</li>
-              <li>Reduced rent offer</li>
-              <li>3 months salary cover</li>
-            </ul>
+        <h2 className="text-6xl font-semibold text-gray-500 ml-96 ">
+          Step{" "}
+          <span
+            className={`text-white transition-opacity duration-1000 ease-in-out ${
+              isImageVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            2
+          </span>
+        </h2>
+        <div
+          className={`w-[90px] h-[4px] mb-0 mt-14 bg-blue-500 ml-96 transition-transform duration-1000 ${
+            isImageVisible ? "translate-y-[-30px]" : ""
+          }`}
+        ></div>
+        <ul className="list-disc text-lg ml-96">
+          <li className="text-yellow-500">
+            Tenant selects Pay with Circle enabling:
+          </li>
+          <ul
+            className={`list-disc text-sm text-gray-400 ml-5 mt-2 transition-opacity duration-1000 ease-in-out ${
+              isImageVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <li>Zero security deposit move-in</li>
+            <li>Reduced rent offer</li>
+            <li>3 months salary cover</li>
           </ul>
-        </div>
+        </ul>
 
         {/* Arrow */}
         <div className="absolute bottom-[30%] right-0 transform translate-x-1/2 z-10">
@@ -46,7 +63,9 @@ function Step2({ currentComponent, handleScrollClick }) {
         <img
           src="/images/step2.png"
           alt="Mobile"
-          className="absolute top-0 w-full ml-8 max-w-xs"
+          className={`absolute top-0 w-full ml-8 max-w-xs  transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
         />
 
         {/* Right: MUI Slider */}

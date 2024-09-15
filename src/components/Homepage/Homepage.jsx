@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "@mui/material/Slider"; // Import the Slider from MUI
 
 function Homepage({ currentComponent, handleScrollClick }) {
@@ -7,23 +7,39 @@ function Homepage({ currentComponent, handleScrollClick }) {
     handleScrollClick(newValue); // Trigger the scroll click based on the slider value
   };
   const sliderRef = useRef(null);
+  const [isImageVisible, setIsImageVisible] = useState(false); // State to control image visibility
+
   // Add focus to the slider on component load
   useEffect(() => {
     if (sliderRef.current) {
       sliderRef.current.focus(); // Ensure slider is focused when page loads
     }
+    setIsImageVisible(true);
   }, []);
 
   return (
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center">
-        <h2 className="text-3xl font-semibold text-white ml-96">
-          How does it Work?
+        <h2
+          className={`text-6xl font-semibold text-gray-500 ml-96 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          How does <br /> it <span className="text-white">Work </span>
+          <span className="text-blue-600">?</span>
         </h2>
-        <div className="w-[60px] h-[2px] my-6 bg-white ml-96"></div>
+        <div
+          className={`w-[90px] h-[4px] mb-11 mt-2 bg-white ml-96  transition-transform duration-1000 ${
+            isImageVisible ? "translate-y-[30px]" : ""
+          }`}
+        ></div>
 
-        <p className="text-lg ml-96 text-gray-400">
+        <p
+          className={`text-lg ml-96 text-gray-400 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
           We make it possible in a quick and easy <br />
           few step process, takes max 5 mins
         </p>
@@ -34,7 +50,9 @@ function Homepage({ currentComponent, handleScrollClick }) {
         <img
           src="/images/homepage.png"
           alt="Mobile"
-          className="absolute bottom-0 w-full max-w-xs ml-8"
+          className={`absolute bottom-0 w-full max-w-xs ml-8 transition-opacity duration-1000 ease-in-out ${
+            isImageVisible ? "opacity-100" : "opacity-0"
+          }`}
         />
 
         {/* Right: MUI Slider */}
