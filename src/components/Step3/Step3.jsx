@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "@mui/material/Slider"; // Import MUI Slider
 
 function Step3({ currentComponent, handleScrollClick }) {
@@ -6,6 +6,14 @@ function Step3({ currentComponent, handleScrollClick }) {
   const handleSliderChange = (event, newValue) => {
     handleScrollClick(newValue); // Trigger the scroll click based on the slider value
   };
+
+  const sliderRef = useRef(null);
+  // Add focus to the slider on component load
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.focus(); // Ensure slider is focused when page loads
+    }
+  }, []);
 
   return (
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
@@ -43,13 +51,17 @@ function Step3({ currentComponent, handleScrollClick }) {
             step={1}
             marks // Adds default marks for slider points
             onChange={handleSliderChange}
+            ref={sliderRef} // Add ref to the slider
+            aria-label="Component Slider" // Accessibility label
+            tabIndex={0} // Make the slider focusable
             sx={{
-              height: 300, // Custom height for the vertical slider
+              height: 200, // Custom height for the vertical slider
+
               "& .MuiSlider-thumb": {
-                backgroundColor: "yellow", // Custom thumb color
+                backgroundColor: "blue", // Custom thumb color
               },
               "& .MuiSlider-track": {
-                backgroundColor: "white", // Custom track color
+                backgroundColor: "blue", // Custom track color
               },
               "& .MuiSlider-rail": {
                 backgroundColor: "gray", // Custom rail color

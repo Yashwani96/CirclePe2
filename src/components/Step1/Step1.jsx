@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Slider from "@mui/material/Slider"; // Import the Slider from MUI
 
 function Step1({ currentComponent, handleScrollClick, showPart2 }) {
   const [activeListItem, setActiveListItem] = useState(1);
+  const sliderRef = useRef(null);
 
-  const handleClick = (index) => {
-    setActiveListItem(index); // Set the active item on click
-  };
+  // Ensure the slider is focused when the component mounts
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.focus(); // Set focus to the slider
+    }
+  }, []);
 
   // Handle slider change event
   const handleSliderChange = (event, newValue) => {
     handleScrollClick(newValue); // Trigger the scroll click based on the slider value
+  };
+
+  const handleClick = (index) => {
+    setActiveListItem(index); // Set the active item on click
   };
 
   return (
@@ -61,20 +69,24 @@ function Step1({ currentComponent, handleScrollClick, showPart2 }) {
         {/* Right: MUI Slider */}
         <div className="h-full flex justify-center items-center ml-56">
           <Slider
+            ref={sliderRef} // Add a ref to the slider for focus
             orientation="vertical"
             value={currentComponent}
             min={0}
             max={4}
             step={1}
-            marks // This adds default marks for the slider points
+            marks // Adds default marks for the slider points
             onChange={handleSliderChange}
+            aria-label="Component Slider" // Accessibility label
+            tabIndex={0} // Make the slider focusable
             sx={{
-              height: 300, // Custom height for the vertical slider
+              height: 200, // Custom height for the vertical slider
+
               "& .MuiSlider-thumb": {
-                backgroundColor: "yellow", // Custom thumb color
+                backgroundColor: "blue", // Custom thumb color
               },
               "& .MuiSlider-track": {
-                backgroundColor: "white", // Custom track color
+                backgroundColor: "blue", // Custom track color
               },
               "& .MuiSlider-rail": {
                 backgroundColor: "gray", // Custom rail color

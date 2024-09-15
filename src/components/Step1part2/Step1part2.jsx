@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Slider from "@mui/material/Slider"; // Import MUI Slider
-import { useState } from "react";
 
 function Step1part2({ currentComponent, handleScrollClick, showPart1 }) {
   const [activeListItem, setActiveListItem] = useState(2);
+  const sliderRef = useRef(null);
+
+  // Ensure the slider is focused when the component mounts
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.focus(); // Set focus to the slider
+    }
+  }, []);
 
   const handleClick = (index) => {
     setActiveListItem(index); // Set the active item on click
@@ -66,6 +73,7 @@ function Step1part2({ currentComponent, handleScrollClick, showPart1 }) {
         {/* Right: MUI Slider */}
         <div className="h-full flex justify-center items-center ml-56">
           <Slider
+            ref={sliderRef} // Add a ref to focus the slider
             orientation="vertical"
             value={currentComponent}
             min={0}
@@ -73,13 +81,16 @@ function Step1part2({ currentComponent, handleScrollClick, showPart1 }) {
             step={1}
             marks // Add default marks for each step
             onChange={handleSliderChange}
+            aria-label="Component Slider" // Accessibility label for screen readers
+            tabIndex={0} // Ensure the slider is keyboard focusable
             sx={{
-              height: 300, // Custom height for the vertical slider
+              height: 200, // Custom height for the vertical slider
+
               "& .MuiSlider-thumb": {
-                backgroundColor: "yellow", // Custom thumb color
+                backgroundColor: "blue", // Custom thumb color
               },
               "& .MuiSlider-track": {
-                backgroundColor: "white", // Custom track color
+                backgroundColor: "blue", // Custom track color
               },
               "& .MuiSlider-rail": {
                 backgroundColor: "gray", // Custom rail color
