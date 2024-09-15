@@ -27,46 +27,50 @@ function Step1({ currentComponent, handleScrollClick, showPart2 }) {
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center">
-        <h2
-          className={`text-6xl font-semibold text-gray-500 ml-96 transition-opacity duration-1000 ease-in-out ${
-            isImageVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          Step <span className="text-white">1</span>
-        </h2>
-        <div
-          className={`w-[90px] h-[4px] mb-0 mt-14 bg-blue-500 ml-96 transition-transform duration-1000 ${
-            isImageVisible ? "translate-y-[-30px]" : ""
-          }`}
-        ></div>
-        <ul
-          className={`list-disc text-lg ml-96 transition-opacity duration-1000 ease-in-out ${
-            isImageVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {/* First List Item: Default Highlighted */}
-          <li
-            className={`cursor-pointer ${
-              activeListItem === 1 ? "text-yellow-500" : "text-gray-400"
-            } hover:text-yellow-500`}
-            onClick={() => handleClick(1)}
-          >
-            Tenant selects the property
-          </li>
+        <div className="flex justify-end mr-6">
+          <div>
+            <h2
+              className={`text-6xl font-semibold text-gray-500  transition-opacity duration-1000 ease-in-out ${
+                isImageVisible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              Step <span className="text-white">1</span>
+            </h2>
+            <div
+              className={`w-[90px] h-[4px] mb-0 mt-14 bg-blue-500  transition-transform duration-1000 ${
+                isImageVisible ? "translate-y-[-30px]" : ""
+              }`}
+            ></div>
+            <ul
+              className={`list-disc text-lg transition-opacity duration-1000 ease-in-out ${
+                isImageVisible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {/* First List Item: Default Highlighted */}
+              <li
+                className={`cursor-pointer ${
+                  activeListItem === 1 ? "text-yellow-500" : "text-gray-400"
+                } hover:text-yellow-500`}
+                onClick={() => handleClick(1)}
+              >
+                Tenant selects the property
+              </li>
 
-          {/* Second List Item */}
-          <li
-            className={`cursor-pointer ${
-              activeListItem === 2 ? "text-yellow-500" : "text-gray-400"
-            } hover:text-yellow-500`}
-            onClick={() => {
-              handleClick(2);
-              showPart2(); // Navigate to Step1Part2 on click
-            }}
-          >
-            Tenant selects flexible rent tenure & amount
-          </li>
-        </ul>
+              {/* Second List Item */}
+              <li
+                className={`cursor-pointer ${
+                  activeListItem === 2 ? "text-yellow-500" : "text-gray-400"
+                } hover:text-yellow-500`}
+                onClick={() => {
+                  handleClick(2);
+                  showPart2(); // Navigate to Step1Part2 on click
+                }}
+              >
+                Tenant selects flexible rent tenure & amount
+              </li>
+            </ul>
+          </div>
+        </div>
 
         {/* Arrow */}
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 z-10">

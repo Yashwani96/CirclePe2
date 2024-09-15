@@ -21,28 +21,32 @@ function Homepage({ currentComponent, handleScrollClick }) {
     <div className="relative flex w-full h-screen items-center justify-between bg-black">
       {/* Left Text Section */}
       <div className="relative w-1/2 h-screen flex flex-col justify-center">
-        <h2
-          className={`text-6xl font-semibold text-gray-500 ml-96 transition-opacity duration-1000 ease-in-out ${
-            isImageVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          How does <br /> it <span className="text-white">Work </span>
-          <span className="text-blue-600">?</span>
-        </h2>
-        <div
-          className={`w-[90px] h-[4px] mb-11 mt-2 bg-white ml-96  transition-transform duration-1000 ${
-            isImageVisible ? "translate-y-[30px]" : ""
-          }`}
-        ></div>
-
-        <p
-          className={`text-lg ml-96 text-gray-400 transition-opacity duration-1000 ease-in-out ${
-            isImageVisible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          We make it possible in a quick and easy <br />
-          few step process, takes max 5 mins
-        </p>
+        <div className="flex justify-end mr-6">
+          <div>
+            {" "}
+            <h2
+              className={`text-6xl font-semibold text-gray-500  transition-opacity duration-1000 ease-in-out ${
+                isImageVisible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              How does <br /> it <span className="text-white">Work </span>
+              <span className="text-blue-600">?</span>
+            </h2>
+            <div
+              className={`w-[90px] h-[4px] mb-11 mt-2 bg-white   transition-transform duration-1000 ${
+                isImageVisible ? "translate-y-[30px]" : ""
+              }`}
+            ></div>
+            <p
+              className={`text-lg  text-gray-400 transition-opacity duration-1000 ease-in-out ${
+                isImageVisible ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              We make it possible in a quick and easy <br />
+              few step process, takes max 5 mins
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Middle: Mobile Image */}
